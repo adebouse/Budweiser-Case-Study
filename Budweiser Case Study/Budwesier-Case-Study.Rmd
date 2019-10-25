@@ -37,11 +37,11 @@ library(corrplot)
 ```{r}
 ##Importing the data
 
-Beers <- read_csv("C:/Users/Antonio Debouse/Desktop/Doing Data Science/GitHub/Budweiser-Case-Study/Beers.csv")
+Beers <- read_csv("C:/Users/Antonio Debouse/Desktop/Doing Data Science/GitHub/Budweiser-Case-Study/Budweiser Case Study/Beers.csv")
 str(Beers)
 view(Beers)
 
-Breweries <- read_csv("C:/Users/Antonio Debouse/Desktop/Doing Data Science/GitHub/Budweiser-Case-Study/Breweries.csv")
+Breweries <- read_csv("C:/Users/Antonio Debouse/Desktop/Doing Data Science/GitHub/Budweiser-Case-Study/Budweiser Case Study/Breweries.csv")
 str(Breweries)
 view(Breweries)
 
@@ -422,7 +422,7 @@ Our search for the best k by looping for many k and the average of many training
 ```{r}
 
 ##Import Household Median Income Data for 2019
-PerState_Data <- read.csv("C:/Users/Antonio Debouse/Desktop/Doing Data Science/GitHub/Budweiser-Case-Study/State Population Data.csv",na=".")
+PerState_Data <- read.csv("C:/Users/Antonio Debouse/Desktop/Doing Data Science/GitHub/Budweiser-Case-Study/Budweiser Case Study/State Population Data.csv",na=".")
 str(PerState_Data)
 
 
@@ -453,6 +453,7 @@ Count_PerState_Data <- inner_join(PerState_Data,countB,by=c("STATE_ABV"="State_A
 
 ##Plot correlation matrix
 plot_correlation(na.omit(Count_PerState_Data[,c(3:9)]), type = "all",'Review.Date')
+
 
 
 
