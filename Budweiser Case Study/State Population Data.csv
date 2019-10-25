@@ -1,0 +1,52 @@
+State,STATE_ABV,REGION,Population,Med_Household_Inc,Beer_Consump
+alabama,AL,Southeast,4850771,46472,28.9
+alaska ,AK,Pacific,738565,76114,26
+arizona,AZ,Southwest,6809946,53510,26.6
+arkansas,AR,Southeast,2977944,43813,23.7
+california,CA,West,38982847,67169,25.1
+colorado,CO,West,5436519,65458,28.3
+connecticut,CT,Northeast,3594478,73781,20.2
+delaware ,DE,Southeast,943732,63036,28.7
+district of columbia,DC,Northeast,672391,77649,
+florida ,FL,Southeast,20278447,50883,26.3
+georgia ,GA,Southeast,10201635,52977,24
+hawaii,HI,Pacific,1421658,74923,28.5
+idaho,ID,West,1657375,50985,25.9
+illinois,IL,Midwest,12854526,61229,27.4
+indiana,IN,Midwest,6614418,52182,23.4
+iowa,IA,Midwest,3118102,56570,31.7
+kansas,KS,Midwest,2903820,55477,25.7
+kentucky,KY,Southeast,4424376,46535,23.6
+louisiana,LA,Southeast,4663461,46710,29.6
+maine,ME,Northeast,1330158,53024,33.8
+maryland ,MD,Southeast,5996079,78916,20.2
+massachusetts,MA,Northeast,6789319,74167,23.6
+michigan,MI,Midwest,9925568,52668,25.3
+minnesota,MN,Midwest,5490726,65699,28.4
+mississippi ,MS,Southeast,2986220,42009,30.9
+missouri ,MO,Midwest,6075300,51542,27.7
+montana ,MT,West,1029862,50801,39.4
+nebraska,NE,Midwest,1893921,56675,33.3
+nevada,NV,West,2887725,55434,32.9
+new hampshire,NH,Northeast,1331848,71305,40.6
+new jersey,NJ,Northeast,8960161,76475,20.6
+new mexico,NM,Southwest,2084828,46718,28.8
+new york,NY,Northeast,19798228,62765,21.9
+north carolina,NC,Southeast,10052564,50320,25
+north dakota,ND,Midwest,745475,61285,38.3
+ohio,OH,Midwest,11609756,52407,27.3
+oklahoma,OK,Southwest,3896251,49767,25.1
+oregon,OR,West,4025127,56119,30
+pennsylvania,PA,Northeast,12790505,56951,26.4
+rhode island ,RI,Northeast,1056138,61043,23
+south carolina,SC,Southeast,4893444,48781,30.9
+south dakota,SD,Midwest,855444,54126,38.2
+tennessee ,TN,Southeast,6597381,48708,24.4
+texas,TX,Southwest,27419612,57051,31.8
+utah,UT,West,2993941,65325,18.7
+vermont,VT,Northeast,624636,57808,32.8
+virginia ,VA,Southeast,8365952,68766,24.4
+washington ,WA,West,7169967,66174,24.7
+west virginia,WV,Southeast,1836843,44061,27.4
+wisconsin,WI,Midwest,5763217,56759,34.3
+wyoming,WY,West,583200,60938,29.5
