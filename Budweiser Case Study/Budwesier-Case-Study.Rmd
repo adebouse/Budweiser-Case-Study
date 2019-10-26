@@ -2,6 +2,7 @@
 title: "Budweiser Case Study"
 author: "Antonio Debouse"
 date: "10/12/2019"
+github link: https://github.com/adebouse/Budweiser-Case-Study.git
 output:
   html_document: default
   pdf_document: default
@@ -64,7 +65,11 @@ plot_missing(Breweries)
 ```{r}
 #Questions 1: How many breweries are present in each state?
 ##Calculate the number of breweries
+summary(Breweries$State)
+
+#Seperate Brewery count by States
 StateCount = count(Breweries,Breweries$State)
+
 
 ##Change "n" to column name "Number of Brewiers in State"
 colnames(StateCount)[1]="State_ABV"
@@ -88,6 +93,8 @@ StateCount %>% ggplot(aes(x=`State_ABV`,y=`Number of Breweries in State`,fill=St
 
 ```
 
+Answer: Acording to our dataset, there are 558 breweries in the US.  
+
 
 
 ```{r}
@@ -106,7 +113,7 @@ head(TotalDataSet,n=6)
 tail(TotalDataSet,n=6)
 
 ```
-
+Answer: I used a full_join function to merge the Beer and Brewery data sets.
 
 
 ```{r}
@@ -119,7 +126,7 @@ names(which(colSums(is.na(TotalDataSet))>0))
 
 ```
 
-Answer: There is some missing data in "Style" but I will only address missing data in "ABV" and "IBU" since those are relevant for questions of interest. I will deal with those missing values by using na.rm during aggregation calculations, and complete delete any observations when using k-NN models. 
+Answer: The missing values in ABV and IBU will be dropped using na.rm = TRUE equation or I will all the missing values to natural be ignored during aggregation calculations. To perform k-NN classfication models, I will delete all the observations with missing values using the na.omit() function. 
 
 
 
@@ -155,9 +162,7 @@ State_Medians_for_ABV_IBU %>% ggplot(aes(x=State, y=Median_ABV,fill=State))+
 
 ```
 
-Comment: Based on the barchart visualization, Maine has the highest median IBU followed by West Virginia. However, the District of Columbia and Kentucy appears to be tied for highest ABV median, followed by Maine with the second highest ABV median. 
-
-
+Comment: Based on the barchart visualization, Maine has the highest median IBU followed by West Virginia.
 
 
 ```{r}
@@ -227,7 +232,7 @@ Beers %>% drop_na() %>% ggplot(aes(x=ABV, y=IBU))+
 
 ```
 
-Answer: There appears to be a positive correlation of ABV to IBU (maybe some type of polynomial relationship); higher the ABV appears to result in a higher IBU
+Answer: There appears to be a positive correlation of ABV to IBU (maybe some type of polynomial relationship); an increase in the amount of alcohol in a beer appears to correlate with the beer becoming more bitter.
 
 ```{r}
 #Question 8: Budweiser would like to investigative the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with "Ale" in its name other than IPA)
@@ -417,7 +422,7 @@ confusionMatrix(classifications,Standard_CleanData_IPA_and_Ale$Style)
 
 
 ```
-Our search for the best k by looping for many k and the average of many training / test partition recommends knn = 5 or 6, we will use 5.  
+Comment: Our search for the best k by looping for many k and the average of many training / test partition recommends knn = 5 or 6, we will use 5. From the internal/external, standardized/unstandardized k-NN classification models I ran, the Standardized External k=5 model delivered the highest accuracy; I was able to accuracy identify an IPA or an Ale with 86.44% accuracy.  
 
 ```{r}
 
@@ -465,8 +470,16 @@ view(Count_PerState_Data %>% group_by(REGION) %>% summarize(
   mutate(Beer_Consunp_Rank = rank(-Median_Beer_Consump, ties.method = "first"),
     PopRank = rank(-MedianPopulation, ties.method = "first"),
          House_Inc_Rank = rank(-Median_House_Inc,ties.method = "first"),
-         Rank_Num_Breweries = rank(Median_Num_Breweries)))
+         Rank_Num_Breweries = rank(-Median_Num_Breweries)))
   
 
 
 ```
+Comment: 
+
+If we assume the ideal location for expansion is in a region with one of the highest beer consumptions, then using a correlation model we see the strongest positive relationship to beer consumption is with the Midwest region. The Midwest has the highest median population, the second highest median beer consumption and second most amount of breweries will also having the 4th highest median household income during 2017. 
+
+Even though the West region had the most breweries and highest median beer consumption, it was only had the 4th highest median population and third median household income. This lead to hypothesis that real estate and/or breweries would on average be cheaper leading to better value to focus expansion resources; however, further analysis is need to test my assumptions. 
+
+
+
