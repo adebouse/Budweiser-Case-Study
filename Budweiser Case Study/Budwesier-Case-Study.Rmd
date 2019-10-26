@@ -272,7 +272,7 @@ CleanData_IPA_and_Ale %>% ggplot(aes(x=ABV, y=IBU, color= Style))+
 
 ```
 
-Comment: The same positive correlation also appears in beers that are only "Ale" and "IPA". The chart shows the visual relationship of IPAs having a higher median ABV of 6.8% and IBU of 70 compared to Ales median ABV of 5.5% and IBU of 30. 
+Comment: The same positive correlation also appears in beers that are only "Ale" and "IPA". The chart shows the visual relationship of IPAs having a higher median ABV of 6.8% and IBU of 70 compared to Ales median ABV of 5.5% and IBU of 30. There are 963 Ales and 571 IPAs in the data set; the two largest "styles" of beer brewed. 
 
 
 
