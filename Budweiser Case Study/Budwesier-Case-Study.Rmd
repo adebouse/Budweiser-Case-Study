@@ -455,9 +455,18 @@ Count_PerState_Data <- inner_join(PerState_Data,countB,by=c("STATE_ABV"="State_A
 plot_correlation(na.omit(Count_PerState_Data[,c(3:9)]), type = "all",'Review.Date')
 
 
+#Get the rank of variables based on regions
 
+view(Count_PerState_Data %>% group_by(REGION) %>% summarize(
+  MedianPopulation = median(Population),
+  Median_House_Inc = median(Med_Household_Inc),
+  Median_Beer_Consump = median(Beer_Consump,na.rm = TRUE),
+  Median_Num_Breweries = sum(`Number of Breweries in State`,na.rm = TRUE)) %>%
+  mutate(Beer_Consunp_Rank = rank(-Median_Beer_Consump, ties.method = "first"),
+    PopRank = rank(-MedianPopulation, ties.method = "first"),
+         House_Inc_Rank = rank(-Median_House_Inc,ties.method = "first"),
+         Rank_Num_Breweries = rank(Median_Num_Breweries)))
+  
 
-##Arrange data in descending order base on Beer_consump, then population, then median household income, then #of Breweries in State
-Count_PerState_Data %>% arrange(desc(Beer_Consump,Population,Med_Household_Inc,`Number of Breweries in State`))%>% print()
 
 ```
