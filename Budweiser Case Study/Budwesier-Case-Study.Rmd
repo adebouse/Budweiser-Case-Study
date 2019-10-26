@@ -4,8 +4,8 @@ author: "Antonio Debouse"
 date: "10/12/2019"
 github link: https://github.com/adebouse/Budweiser-Case-Study.git
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 
@@ -359,11 +359,12 @@ confusionMatrix(classifications,Standard_CleanData_IPA_and_Ale$Style)
 
 
 ```
-Comment: Our search for the best k by looping for many k and the average of many training / test partition recommends knn = 5 or 6, we will use 5. From the internal/external, standardized/unstandardized k-NN classification models I ran, the Standardized External k=5 model delivered the highest accuracy; I was able to accuracy identify an IPA or an Ale with 86.44% accuracy.  
+Comment: Our search for the best k by looping for many k and the average of many training / test partition recommends knn = 5 or 6, we will use 5. From the internal/external, standardized/unstandardized k-NN classification models I ran, the untandardized internal k=5 model delivered the highest accuracy; I was able to accuracy identify an IPA or an Ale with 86.65% accuracy.  
 
 
 
 ```{r}
+#Question 9: Find one other useful inference from the data that Budweiser may be able to find value in. 
 
 ##Import Household Median Income Data for 2019
 PerState_Data <- read.csv("C:/Users/Antonio Debouse/Desktop/Doing Data Science/GitHub/Budweiser-Case-Study/Budweiser Case Study/State Population Data.csv",na=".")
