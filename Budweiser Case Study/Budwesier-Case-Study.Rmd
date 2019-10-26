@@ -274,74 +274,11 @@ CleanData_IPA_and_Ale %>% ggplot(aes(x=ABV, y=IBU, color= Style))+
 
 Comment: The same positive correlation also appears in beers that are only "Ale" and "IPA". The chart shows the visual relationship of IPAs having a higher median ABV of 6.8% and IBU of 70 compared to Ales median ABV of 5.5% and IBU of 30. 
 
-```{r}
-#Create a data set to combine all "styles" counts per state to one data frame
 
-##Analysis the number of Styles in the total data set, then chose familar styles as main categories
-str(TotalDataSet$Style)
-
-
-##Filter to create an "Cider" only data set
-Cider <- filter(TotalDataSet, grepl("Cider",Style))
-Cider$Style = "Cider"
-
-##Filter to create an "Stout" only data set
-Stout <- filter(TotalDataSet, grepl("Stout",Style))
-Stout$Style = "Stout"
-
-##Filter to create an "Stout" only data set
-Porter <- filter(TotalDataSet, grepl("Porter",Style))
-Porter$Style = "Porter"
-
-##Filter to create an "Lager" only data set
-Lager <- filter(TotalDataSet, grepl("Lager",Style))
-Lager$Style = "Lager"
-
-##Filter to create an "Lager" only data set
-Pilsener <- filter(TotalDataSet, grepl("Pilsener",Style))
-Pilsener$Style = "German or Czech Pilsener"
-
-#Filter to create a "Pilsner" only data set
-Pilsner <- filter(TotalDataSet, grepl("Pilsner", Style))
-Pilsner$Style = "American Pilsner"
-
-#Filter to create "Fruit Beer" only data set
-Fruit_Beer <- filter(TotalDataSet, grepl("Fruit", Style))
-Fruit_Beer$Style = "Fruity Beer"
-
-##Filter to create an "Other" sytles of beer only data set
-Other_Styles <- filter(TotalDataSet, !grepl("Ale",Style),!grepl("IPA",Style),!grepl("Cider", Style),!grepl("Stout", Style),!grepl("Porter",Style),!grepl("Lager",Style), !grepl("Pilsener",Style), !grepl("Pilsner", Style), !grepl("Fruit", Style))
-
-Other_Styles$Style <- "Other Styles"
-
-
-##Combine all "styles" into one data set
-ALL_Styles_Category <- rbind(IPA,Only_Ale,Cider,Stout,Porter,Lager,Pilsener,Pilsner,Fruit_Beer,Other_Styles)
-
-str(ALL_Styles_Category)
-
-##Change Style and State variables to factors
-ALL_Styles_Category$Style = as.factor(ALL_Styles_Category$Style)
-ALL_Styles_Category$State = as.factor(ALL_Styles_Category$State)
-
-colnames(ALL_Styles_Category)[1]="Names of Beers"
-colnames(ALL_Styles_Category)[8] = "Names of Breweries"
-
-#Plot Barchart with count of beers in each state, fill with style catergories
-ALL_Styles_Category %>% ggplot(aes(x=State, fill = Style))+
-  geom_bar()+  ggtitle("Total Beers Brewed in Each State, Coded by Beer Type")+
-  xlab("State")+
-  ylab("Total Beers Brewed in a State")+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-
-
-summary(ALL_Styles_Category[,6])
-```
 
 
 ```{r, results="hide"}
-
+#Question 8 (cont.): Budweiser would like to investigative the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with "Ale" in its name other than IPA)
 
 ##Tells the percentage of the dataset that will go into the training set
 splitPerc = .75
@@ -424,6 +361,8 @@ confusionMatrix(classifications,Standard_CleanData_IPA_and_Ale$Style)
 ```
 Comment: Our search for the best k by looping for many k and the average of many training / test partition recommends knn = 5 or 6, we will use 5. From the internal/external, standardized/unstandardized k-NN classification models I ran, the Standardized External k=5 model delivered the highest accuracy; I was able to accuracy identify an IPA or an Ale with 86.44% accuracy.  
 
+
+
 ```{r}
 
 ##Import Household Median Income Data for 2019
@@ -482,4 +421,69 @@ If we assume the ideal location for expansion is in a region with one of the hig
 Even though the West region had the most breweries and highest median beer consumption, it was only had the 4th highest median population and third median household income. This lead to hypothesis that real estate and/or breweries would on average be cheaper leading to better value to focus expansion resources; however, further analysis is need to test my assumptions. 
 
 
+
+```{r}
+#Create a data set to combine all "styles" counts per state to one data frame
+
+##Analysis the number of Styles in the total data set, then chose familar styles as main categories
+str(TotalDataSet$Style)
+
+
+##Filter to create an "Cider" only data set
+Cider <- filter(TotalDataSet, grepl("Cider",Style))
+Cider$Style = "Cider"
+
+##Filter to create an "Stout" only data set
+Stout <- filter(TotalDataSet, grepl("Stout",Style))
+Stout$Style = "Stout"
+
+##Filter to create an "Stout" only data set
+Porter <- filter(TotalDataSet, grepl("Porter",Style))
+Porter$Style = "Porter"
+
+##Filter to create an "Lager" only data set
+Lager <- filter(TotalDataSet, grepl("Lager",Style))
+Lager$Style = "Lager"
+
+##Filter to create an "Lager" only data set
+Pilsener <- filter(TotalDataSet, grepl("Pilsener",Style))
+Pilsener$Style = "German or Czech Pilsener"
+
+#Filter to create a "Pilsner" only data set
+Pilsner <- filter(TotalDataSet, grepl("Pilsner", Style))
+Pilsner$Style = "American Pilsner"
+
+#Filter to create "Fruit Beer" only data set
+Fruit_Beer <- filter(TotalDataSet, grepl("Fruit", Style))
+Fruit_Beer$Style = "Fruity Beer"
+
+##Filter to create an "Other" sytles of beer only data set
+Other_Styles <- filter(TotalDataSet, !grepl("Ale",Style),!grepl("IPA",Style),!grepl("Cider", Style),!grepl("Stout", Style),!grepl("Porter",Style),!grepl("Lager",Style), !grepl("Pilsener",Style), !grepl("Pilsner", Style), !grepl("Fruit", Style))
+
+Other_Styles$Style <- "Other Styles"
+
+
+##Combine all "styles" into one data set
+ALL_Styles_Category <- rbind(IPA,Only_Ale,Cider,Stout,Porter,Lager,Pilsener,Pilsner,Fruit_Beer,Other_Styles)
+
+str(ALL_Styles_Category)
+
+##Change Style and State variables to factors
+ALL_Styles_Category$Style = as.factor(ALL_Styles_Category$Style)
+ALL_Styles_Category$State = as.factor(ALL_Styles_Category$State)
+
+colnames(ALL_Styles_Category)[1]="Names of Beers"
+colnames(ALL_Styles_Category)[8] = "Names of Breweries"
+
+#Plot Barchart with count of beers in each state, fill with style catergories
+ALL_Styles_Category %>% ggplot(aes(x=State, fill = Style))+
+  geom_bar()+  ggtitle("Total Beers Brewed in Each State, Coded by Beer Type")+
+  xlab("State")+
+  ylab("Total Beers Brewed in a State")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+
+summary(ALL_Styles_Category[,6])
+```
 
